@@ -1,0 +1,33 @@
+#!/bin/bash
+# A less automated way to download packages from AUR
+#
+# Requires cower
+#
+# $ pacbuild package_name
+# downloads the package and its dependencies and create a script to build them
+
+mkdir "$1"
+pushd "$1"
+packages=$(cower -dd "$1" | tac | sed -n 's/^:: \([a-z0-9-]\+\) .*$/\1 /p')
+
+touch build.sh
+chmod +x build.sh
+
+echo "# Script to build $1" > build.sh
+
+for p in $packages
+do
+	eval `grep '^pkgdesc' "$p"/PKGBUILD`
+cat << EOF >> build.sh
+
+# `echo "$p: $pkgdesc"`
+# `echo "$p"`/PKGBUILD
+pushd $p
+makepkg -cs
+makepkg -i
+popd
+EOF
+
+done
+
+popd
