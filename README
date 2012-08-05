@@ -1,0 +1,9 @@
+pacbuild: a less automagic way to download packages from AUR
+
+This script is for those arch linux users who want more control on their AUR
+packages but don't want to download and compile each dependency individually.
+
+pacbuild won't install the packages for you, instead it will download the
+package and its dependencies (using `cower') to a folder and generate a script
+with the building steps. Edit the script if you want to change one of the
+building steps.
