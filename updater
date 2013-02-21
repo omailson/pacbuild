@@ -6,7 +6,7 @@ packages=$(echo "$output" | grep '^:: ')
 if [ -f "build.sh" ]
 then
 	read -p "A build file already exist. Would you like to remove it? [Y/n] " REPLY
-	if [ -z "$REPLY" -o "$REPLY" = "Y" ]
+	if [ -z "$REPLY" -o "$REPLY" = "Y" -o "$REPLY" = "y" ]
 	then
 		rm build.sh
 	else
