@@ -27,14 +27,17 @@ do
 	# Write to build file
 cat << EOF >> build.sh
 
-# `echo "$line" | sed -n 's/^:: //p'`
+# `echo "$line" | sed -n 's/^:: //p'` {{{1
 cower -ddf $p
 pushd $p
 makepkg -cs
 makepkg -i
 popd
+# }}}1
 EOF
 	# End
 done
+
+echo "# vim:ft=sh foldmethod=marker" >> build.sh
 
 echo "Build file generated. Now open build.sh with a text editor then run using ./build.sh"
