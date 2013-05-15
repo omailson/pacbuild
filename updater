@@ -27,7 +27,7 @@ do
 	# Write to build file
 cat << EOF >> build.sh
 
-# `echo "$line" | sed -n 's/^:: //p'` {{{1
+# $(echo "$line" | sed -n 's/^:: //p') {{{1
 cower -ddf $p
 pushd $p
 makepkg -cs
