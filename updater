@@ -38,6 +38,7 @@ EOF
 	# End
 done
 
-echo "# vim:ft=sh foldmethod=marker" >> build.sh
+echo -n "# vim" >> build.sh
+echo ":ft=sh foldmethod=marker" >> build.sh
 
 echo "Build file generated. Now open build.sh with a text editor then run using ./build.sh"
