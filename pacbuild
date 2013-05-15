@@ -27,6 +27,10 @@ makepkg -cs
 makepkg -i
 popd
 EOF
+if [ "$p" != "$1" ]
+then
+	echo "sudo pacman -D --asdeps $p" >> build.sh
+fi
 
 done
 
